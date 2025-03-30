@@ -203,9 +203,24 @@
 		&-top,
 		&-bottom {
 			@include ratio(179, 179);
+			position: absolute;
+			width: 30%;
+			z-index: 3;
 		}
 
 		&-top {
+			top: 12%;
+			right: 3%;
+
+			// @include media('>phone-small') {
+			// 	top: -15%;
+			// 	right: -10%;
+			// }
+			// @include media('>tablet') {
+			// 	top: -12%;
+			// 	right: -8%;
+			// }
+
 			&::before {
 				@extend %dots-pattern;
 
@@ -220,6 +235,21 @@
 					height: 20%;
 				}
 			}
+		}
+
+		&-bottom {
+			bottom: 7%;
+			left: -5%;
+		
+			// @include media('>phone-small') {
+			// 	bottom: -15%;
+			// 	left: -10%;
+			// }
+		
+			// @include media('>tablet') {
+			// 	bottom: -12%;
+			// 	left: -8%;
+			// }
 		}
 	}
 
