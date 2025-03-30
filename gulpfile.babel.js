@@ -205,13 +205,43 @@ gulp.task('customJS', () => {
 		.pipe(notify({message: '\n\n===> JavaScript Compiled\n', onLast: true}));
 });
 
+// Image optimization plugins
+const imagemin = require('gulp-imagemin');
+
+/**
+ * Task: `images`.
+ *
+ * Minifies PNG, JPEG, GIF and SVG images.
+ */
+gulp.task('images', () => {
+  return gulp
+    .src(config.imgSRC, { allowEmpty: true })
+    .pipe(plumber(errorHandler))
+    .pipe(
+      cache(
+        imagemin([
+          imagemin.gifsicle({ interlaced: true }),
+          imagemin.mozjpeg({ quality: 75, progressive: true }),
+          imagemin.optipng({ optimizationLevel: 5 }),
+          imagemin.svgo({
+            plugins: [
+              { removeViewBox: false },
+              { cleanupIDs: false }
+            ]
+          })
+        ])
+      )
+    )
+    .pipe(gulp.dest(config.imgDST))
+    .pipe(notify({ message: '\n\n===> Images Optimized\n', onLast: true }));
+});
+
 /**
  * Build for Production.
  *
  * Watches for file changes and runs specific tasks.
  */
-gulp.task('production', gulp.parallel('styles', 'customJS'));
-
+gulp.task('production', gulp.parallel('styles', 'customJS', 'images'));
 
 /**
  * start development mode.
@@ -219,11 +249,12 @@ gulp.task('production', gulp.parallel('styles', 'customJS'));
  * Watches for file changes js, scss, php and reloads the browser.
  */
 gulp.task('default', gulp.series(
-	gulp.parallel('styles', 'customJS'),
+	gulp.parallel('styles', 'customJS','images'),
 	browsersync,
 	function watchFiles() {
 		gulp.watch(config.watchStyles, gulp.series('styles'));
 		gulp.watch(config.watchJsCustom, gulp.series('customJS'));
 		gulp.watch(config.watchPhp, reload);
+		gulp.watch(config.imgSRC, gulp.series('images'));
 	}
 ));

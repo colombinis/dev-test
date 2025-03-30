@@ -54,3 +54,21 @@ You are allowed to use any and all dependencies that you deem necessary for acco
 ## Submission
 
 When completed, ensure that you run `npm run build`, keep the generated `dist` folder in your submission, remove the `node_modules` folder from the project and compress the project into a zip file. Submissions can be sent by email to the recruiter that you've been working with.
+
+## Troubleshooting
+If the below command doesn't work.
+```
+npm start
+```
+A) Make sure you have a default task in the gulpfile.babel.js
+
+---
+To run php local server you can use the below command
+```
+php -S localhost:8080
+```
+and make sure to use the same port in the file .env
+```
+DEVELOPMENT_DOMAIN=website.local:8080
+```
+NOTE: to use website.local you need to change your hosts file (linux) /etc/hosts
