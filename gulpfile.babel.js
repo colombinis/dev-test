@@ -211,3 +211,19 @@ gulp.task('customJS', () => {
  * Watches for file changes and runs specific tasks.
  */
 gulp.task('production', gulp.parallel('styles', 'customJS'));
+
+
+/**
+ * start development mode.
+ *
+ * Watches for file changes js, scss, php and reloads the browser.
+ */
+gulp.task('default', gulp.series(
+	gulp.parallel('styles', 'customJS'),
+	browsersync,
+	function watchFiles() {
+		gulp.watch(config.watchStyles, gulp.series('styles'));
+		gulp.watch(config.watchJsCustom, gulp.series('customJS'));
+		gulp.watch(config.watchPhp, reload);
+	}
+));
