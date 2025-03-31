@@ -65,7 +65,7 @@
         				<a href="#" class="footer-navigation__link">Experience</a>
         			</li>
         			<li class="footer-navigation__list-item">
-        				<a href="#" class="footer-navigation__link">Company</a>
+        				<a href="#culture" class="footer-navigation__link">Company</a>
         			</li>
         			<li class="footer-navigation__list-item">
         				<a href="#" class="footer-navigation__link">Careers</a>
@@ -79,7 +79,9 @@
         		</ul>
         	</nav>
             <?php include('social-links.php'); ?>
-        	<button id="footer-scroll-top" class="footer-navigation__to-top">To Top</button>
+			<a href="#hero" id="footer-scroll-top" class="footer-navigation__to-top">
+				<span class="footer-navigation__text">To Top</span>
+			</a>
 		</div>
 	</div>
 </footer>
