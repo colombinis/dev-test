@@ -36,7 +36,7 @@
 	                </li>
 				<?php endfor; ?>
 			</ul>
-			<a href="#" class="openings-content__button">View All Open Roles</a>
 		</div>
 	</div>
+	<a href="#" class="openings-content__button">View All Open Roles</a>
 </section>

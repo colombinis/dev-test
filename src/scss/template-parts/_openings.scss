@@ -143,7 +143,7 @@
 			@extend %site-button;
 
 			position: absolute;
-			bottom: rem-calc(-77);
+			bottom: rem-calc(67);
 			left: 50%;
 			z-index: 4;
 			transform: translateX(-50%);
@@ -152,8 +152,8 @@
 
 			@include media('>phone') {
 				position: relative;
-				bottom: 0;
-				left: 0;
+				bottom: rem-calc(181);
+				left: rem-calc(333);
 				transform: none;
 				width: auto;
 				max-width: 100%;
